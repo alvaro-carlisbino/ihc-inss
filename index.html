@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INSS - Instituto Nacional do Seguro Social</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1e3a8a;
+            font-size: 20px;
+        }
+
+        .header-text h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .header-text p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-header {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-header:hover {
+            background: white;
+            color: #1e3a8a;
+        }
+
+        /* Navigation */
+        .nav {
+            background: #ffffff;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .nav-item {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #3b82f6;
+            border-bottom-color: #3b82f6;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 36px;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #64748b;
+            margin-bottom: 40px;
+        }
+
+        /* Quick Access */
+        .quick-access {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #1e3a8a;
+            margin-bottom: 50px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Search Section */
+        .search-section {
+            background: #f8fafc;
+            padding: 60px 0;
+        }
+
+        .search-container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .search-container h3 {
+            font-size: 24px;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px;
+            min-width: 250px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        .btn-search {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-search:hover {
+            transform: translateY(-2px);
+        }
+
+        /* News Section */
+        .news-section {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background: #f8fafc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .news-image {
+            height: 200px;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-date {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .news-title {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .news-excerpt {
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #3b82f6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+
+            .search-input {
+                min-width: 100%;
+            }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+        }
+
+        /* Focus styles for accessibility */
+        .btn-primary:focus,
+        .btn-header:focus,
+        .nav-item:focus {
+            outline: 3px solid #fbbf24;
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .service-card {
+                border: 2px solid #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo" aria-label="Logo INSS">INSS</div>
+                <div class="header-text">
+                    <h1>Instituto Nacional do Seguro Social</h1>
+                    <p>Protegendo o futuro dos brasileiros</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="#" class="btn-header" role="button">Meu INSS</a>
+                <a href="#" class="btn-header" role="button">Atendimento</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Menu principal">
+        <div class="nav-content">
+            <a href="#" class="nav-item">Serviços</a>
+            <a href="#" class="nav-item">Benefícios</a>
+            <a href="#" class="nav-item">Aposentadoria</a>
+            <a href="#" class="nav-item">Auxílios</a>
+            <a href="#" class="nav-item">Informações</a>
+            <a href="#" class="nav-item">Contato</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" role="banner">
+        <div class="hero-content">
+            <h2>Seus direitos previdenciários em primeiro lugar</h2>
+            <p>Acesse seus benefícios, solicite serviços e encontre informações importantes de forma simples e rápida</p>
+        </div>
+    </section>
+
+    <!-- Quick Access -->
+    <section class="quick-access" role="main">
+        <div class="container">
+            <h2 class="section-title">Serviços Mais Procurados</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon" aria-hidden="true">👤</div>
+                    <h3>Aposentadoria</h3>
+                    <p>Solicite sua aposentadoria ou consulte o andamento do seu processo</p>
+                    <a href="#" class="btn-primary" role="button">Acessar</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" aria-hidden="true">📄</div>
+                    <h3>Extrato Previdenciário</h3>
+                    <p>Consulte seu histórico de contribuições e tempo de serviço</p>
+                    <a href="#" class="btn-primary" role="button">Consultar</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" aria-hidden="true">💰</div>
+                    <h3>Auxílio-Doença</h3>
+                    <p>Solicite auxílio-doença ou acompanhe sua solicitação</p>
+                    <a href="#" class="btn-primary" role="button">Solicitar</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" aria-hidden="true">📊</div>
+                    <h3>Simulador</h3>
+                    <p>Simule sua aposentadoria e planeje seu futuro</p>
+                    <a href="#" class="btn-primary" role="button">Simular</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" aria-hidden="true">🏥</div>
+                    <h3>Perícia Médica</h3>
+                    <p>Agende ou reagende sua perícia médica</p>
+                    <a href="#" class="btn-primary" role="button">Agendar</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" aria-hidden="true">📞</div>
+                    <h3>Atendimento</h3>
+                    <p>Encontre agências ou fale conosco pelo telefone</p>
+                    <a href="#" class="btn-primary" role="button">Contatar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <h3>Buscar Informações</h3>
+                <form class="search-form" role="search">
+                    <input type="search" class="search-input" placeholder="Digite o que você procura..." aria-label="Campo de busca">
+                    <button type="submit" class="btn-search">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">Notícias e Atualizações</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-image" aria-hidden="true">📰</div>
+                    <div class="news-content">
+                        <time class="news-date" datetime="2025-06-01">01 de Junho, 2025</time>
+                        <h3 class="news-title">Novas Regras para Aposentadoria</h3>
+                        <p class="news-excerpt">Saiba mais sobre as atualizações nas regras de aposentadoria que entram em vigor neste mês.</p>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-image" aria-hidden="true">💻</div>
+                    <div class="news-content">
+                        <time class="news-date" datetime="2025-05-28">28 de Maio, 2025</time>
+                        <h3 class="news-title">Melhoria no Atendimento Digital</h3>
+                        <p class="news-excerpt">Sistema do Meu INSS recebe atualizações para melhorar a experiência do usuário.</p>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-image" aria-hidden="true">📅</div>
+                    <div class="news-content">
+                        <time class="news-date" datetime="2025-05-25">25 de Maio, 2025</time>
+                        <h3 class="news-title">Calendário de Pagamentos</h3>
+                        <p class="news-excerpt">Confira as datas de pagamento dos benefícios para o mês de junho.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#">Aposentadoria</a></li>
+                        <li><a href="#">Auxílio-Doença</a></li>
+                        <li><a href="#">Pensão por Morte</a></li>
+                        <li><a href="#">Salário-Maternidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Atendimento</h4>
+                    <ul>
+                        <li><a href="#">Central 135</a></li>
+                        <li><a href="#">Agências</a></li>
+                        <li><a href="#">Ouvidoria</a></li>
+                        <li><a href="#">Meu INSS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Informações</h4>
+                    <ul>
+                        <li><a href="#">Legislação</a></li>
+                        <li><a href="#">Transparência</a></li>
+                        <li><a href="#">Dados Abertos</a></li>
+                        <li><a href="#">Perguntas Frequentes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Institucional</h4>
+                    <ul>
+                        <li><a href="#">Sobre o INSS</a></li>
+                        <li><a href="#">Estrutura</a></li>
+                        <li><a href="#">Concursos</a></li>
+                        <li><a href="#">Notícias</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Instituto Nacional do Seguro Social - INSS. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simples interatividade para demonstração
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animação suave para scroll
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Aqui poderia adicionar scroll suave
+                });
+            });
+
+            // Feedback visual nos botões
+            const buttons = document.querySelectorAll('.btn-primary, .btn-header, .btn-search');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Feedback visual simples
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // Simulação de busca
+            const searchForm = document.querySelector('.search-form');
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const searchInput = this.querySelector('.search-input');
+                if (searchInput.value.trim()) {
+                    alert('Busca realizada: ' + searchInput.value);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
