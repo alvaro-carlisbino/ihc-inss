@@ -4,1012 +4,653 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INSS - Instituto Nacional do Seguro Social</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #0052CC;
-            --primary-dark: #0747A6;
-            --primary-light: #4C9AFF;
-            --secondary-color: #00875A;
-            --secondary-dark: #006644;
-            --accent-color: #FF5630;
-            --background-light: #F4F5F7;
-            --text-primary: #172B4D;
-            --text-secondary: #505F79;
-            --text-light: #6B778C;
-            --white: #FFFFFF;
-            --success: #36B37E;
-            --warning: #FFAB00;
-            --error: #FF5630;
-            --border-radius-sm: 4px;
-            --border-radius-md: 8px;
-            --border-radius-lg: 16px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --primary-color: #1e40af;
+            --secondary-color: #3b82f6;
+            --accent-color: #10b981;
+            --light-bg: #f8fafc;
+            --dark-text: #1e293b;
+            --gray-text: #64748b;
         }
 
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--background-light);
+            color: var(--dark-text);
+            background-color: #ffffff;
         }
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
-            color: var(--white);
-            padding: 1.5rem 0;
-            box-shadow: var(--shadow-md);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: var(--transition);
+        /* Header Styles */
+        .header-top {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 15px 0;
         }
 
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-section {
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 15px;
         }
 
         .logo {
-            width: 70px;
-            height: 70px;
-            background: var(--white);
+            width: 60px;
+            height: 60px;
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-size: 24px;
             color: var(--primary-color);
-            font-size: 1.5rem;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
+            font-weight: bold;
         }
 
-        .logo:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-md);
-        }
-
-        .header-text h1 {
-            font-size: 1.75rem;
-            margin-bottom: 0.25rem;
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin: 0;
             font-weight: 700;
         }
 
-        .header-text p {
-            font-size: 1rem;
+        .logo-text p {
+            margin: 0;
+            font-size: 0.9rem;
             opacity: 0.9;
-            font-weight: 500;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .btn-header {
-            background: rgba(255,255,255,0.15);
-            border: 2px solid var(--white);
-            color: var(--white);
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--border-radius-md);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-header:hover {
-            background: var(--white);
-            color: var(--primary-color);
-            transform: translateY(-2px);
         }
 
         /* Navigation */
-        .nav {
-            background: var(--white);
-            padding: 1rem 0;
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 90px;
-            z-index: 999;
+        .navbar-custom {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
         }
 
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
+        .navbar-nav .nav-link {
+            color: var(--dark-text);
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
 
-        .nav-item {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 0.5rem 0;
-            border-bottom: 3px solid transparent;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-item:hover {
+        .navbar-nav .nav-link:hover {
+            background: var(--light-bg);
             color: var(--primary-color);
-        }
-
-        .nav-item::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .nav-item:hover::after {
-            width: 100%;
-        }
-
-        /* Mobile Navigation */
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            transition: var(--transition);
-        }
-
-        @media (max-width: 768px) {
-            .nav {
-                background: var(--white);
-                padding: 0;
-                height: 60px;
-                display: flex;
-                align-items: center;
-                top: 0;
-            }
-
-            .nav-toggle {
-                display: block;
-                position: absolute;
-                right: 1rem;
-                top: 1rem;
-                z-index: 1000;
-                color: var(--primary-color);
-            }
-
-            .nav-content {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: 100vh;
-                background: var(--white);
-                padding: 5rem 2rem 2rem;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1.5rem;
-                transition: var(--transition);
-                box-shadow: var(--shadow-lg);
-                z-index: 999;
-            }
-
-            .nav-content.active {
-                left: 0;
-            }
-
-            .nav-overlay {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                z-index: 998;
-            }
-
-            .nav-overlay.active {
-                display: block;
-            }
-
-            .nav-item {
-                width: 100%;
-                padding: 0.75rem 0;
-                border-bottom: 1px solid var(--background-light);
-            }
-
-            .nav-item::after {
-                display: none;
-            }
-
-            .header {
-                position: relative;
-            }
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #E8F5FF 0%, #F0F7FF 100%);
-            padding: 6rem 0;
-            text-align: center;
+        .hero-section {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #e2e8f0 100%);
+            padding: 60px 0;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="2" fill="%234C9AFF" opacity="0.1"/></svg>') repeat;
-            opacity: 0.5;
         }
 
         .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 2rem;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
-        .hero h2 {
-            font-size: 3.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
+        .hero-title {
+            font-size: 3rem;
             font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--gray-text);
+            margin-bottom: 30px;
         }
 
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: var(--border-radius-lg);
-            padding: 2rem;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.1);
+        /* Quick Actions Cards */
+        .quick-actions {
+            margin-top: -40px;
             position: relative;
-            overflow: hidden;
+            z-index: 3;
         }
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
-            transform: scaleX(0);
-            transition: var(--transition);
+        .action-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: none;
+            height: 100%;
+            cursor: pointer;
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+        .action-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-icon {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+        .action-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2.5rem;
-            color: var(--white);
-            transition: var(--transition);
-        }
-
-        .service-card:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .service-card p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            color: var(--white);
-            padding: 0.875rem 2rem;
-            border: none;
-            border-radius: var(--border-radius-md);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,82,204,0.4);
-        }
-
-        .btn-primary:hover::before {
-            opacity: 1;
-        }
-
-        .btn-primary span {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Search Section */
-        .search-section {
-            background: var(--white);
-            padding: 5rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .search-container {
-            background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
-            border-radius: var(--border-radius-lg);
-            padding: 3rem;
-            box-shadow: var(--shadow-lg);
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .search-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
-            opacity: 0.05;
-            border-radius: var(--border-radius-lg);
-        }
-
-        .search-container h3 {
+            margin: 0 auto 20px;
             font-size: 2rem;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
+            color: white;
         }
 
-        .search-form {
-            display: flex;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            border: 2px solid #E1E4E8;
-            border-radius: var(--border-radius-md);
-            font-size: 1rem;
-            transition: var(--transition);
-            color: var(--text-primary);
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(0,82,204,0.1);
-        }
-
-        .btn-search {
-            background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
-            color: var(--white);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: var(--border-radius-md);
+        .action-card h3 {
+            font-size: 1.4rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
+            margin-bottom: 10px;
+            color: var(--dark-text);
         }
 
-        .btn-search:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,135,90,0.4);
+        .action-card p {
+            color: var(--gray-text);
+            margin: 0;
+            font-size: 0.95rem;
         }
 
-        /* News Section */
-        .news-section {
-            padding: 5rem 0;
-            background: var(--white);
+        /* Services Section */
+        .services-section {
+            padding: 80px 0;
+            background: white;
         }
 
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark-text);
         }
 
-        .news-card {
-            background: var(--white);
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.1);
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
         }
 
-        .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+        .service-item:hover {
+            background: white;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--accent-color);
         }
 
-        .news-image {
-            height: 220px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            font-size: 3rem;
-            transition: var(--transition);
+            color: white;
+            font-size: 1.2rem;
         }
 
-        .news-card:hover .news-image {
-            transform: scale(1.05);
+        /* Contact Section */
+        .contact-section {
+            background: var(--light-bg);
+            padding: 60px 0;
         }
 
-        .news-content {
-            padding: 1.5rem;
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
         }
 
-        .news-date {
-            color: var(--text-light);
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .news-title {
-            color: var(--text-primary);
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-
-        .news-excerpt {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            font-size: 0.975rem;
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent-color), #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: white;
         }
 
         /* Footer */
         .footer {
-            background: var(--primary-dark);
-            color: var(--white);
-            padding: 5rem 0 2rem;
-            position: relative;
-            overflow: hidden;
+            background: var(--dark-text);
+            color: white;
+            padding: 40px 0 20px;
         }
 
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-light), var(--primary-color));
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-section h4 {
-            margin-bottom: 1.5rem;
-            color: var(--primary-light);
-            font-size: 1.25rem;
+        .footer h5 {
             font-weight: 600;
-            position: relative;
-            padding-bottom: 0.5rem;
+            margin-bottom: 20px;
         }
 
-        .footer-section h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--primary-light);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-section ul li a {
-            color: rgba(255,255,255,0.8);
+        .footer a {
+            color: #cbd5e1;
             text-decoration: none;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            transition: color 0.3s ease;
         }
 
-        .footer-section ul li a:hover {
-            color: var(--white);
-            transform: translateX(5px);
+        .footer a:hover {
+            color: white;
         }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.6);
-            font-size: 0.875rem;
+        /* Accessibility Features */
+        .accessibility-bar {
+            background: #f1f5f9;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
         }
 
-        /* Accessibility Improvements */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0,0,0,0);
-            border: 0;
+        .accessibility-btn {
+            background: none;
+            border: 1px solid #cbd5e1;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        *:focus {
-            outline: 3px solid var(--primary-light);
-            outline-offset: 2px;
-        }
-
-        *:focus:not(:focus-visible) {
-            outline: none;
-        }
-
-        *:focus-visible {
-            outline: 3px solid var(--primary-light);
-            outline-offset: 2px;
-        }
-
-        /* Skip to main content */
-        .skip-to-main {
-            position: absolute;
-            top: -100px;
-            left: 50%;
-            transform: translateX(-50%);
+        .accessibility-btn:hover {
             background: var(--primary-color);
-            color: var(--white);
-            padding: 1rem 2rem;
-            border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            z-index: 1001;
-        }
-
-        .skip-to-main:focus {
-            top: 0;
-        }
-
-        /* High contrast improvements */
-        @media (prefers-contrast: high) {
-            :root {
-                --primary-color: #0039B3;
-                --primary-dark: #002266;
-                --text-primary: #000000;
-                --text-secondary: #333333;
-            }
-
-            .service-card,
-            .news-card {
-                border: 2px solid #000000;
-            }
-
-            .btn-primary,
-            .btn-header,
-            .btn-search {
-                border: 2px solid #000000;
-            }
-        }
-
-        /* Reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-            }
+            color: white;
+            border-color: var(--primary-color);
         }
 
         /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-
-            .nav-content {
-                gap: 2rem;
-            }
-        }
-
         @media (max-width: 768px) {
-            .header-content {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .action-card {
+                margin-bottom: 20px;
+            }
+            
+            .service-item {
                 flex-direction: column;
                 text-align: center;
-                gap: 1.5rem;
-            }
-
-            .logo-section {
-                flex-direction: column;
-            }
-
-            .nav-content {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .search-form {
-                flex-direction: column;
-            }
-
-            .service-card,
-            .news-card {
-                margin: 0 1rem;
             }
         }
 
-        @media (max-width: 480px) {
-            .header-actions {
-                flex-direction: column;
-                width: 100%;
-            }
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
 
-            .btn-header {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .hero h2 {
-                font-size: 1.75rem;
-            }
-
-            .service-card,
-            .news-card {
-                margin: 0 0.5rem;
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" role="banner">
-        <div class="header-content">
-            <div class="logo-section">
-                <div class="logo" aria-label="Logo INSS">INSS</div>
-                <div class="header-text">
-                    <h1>Instituto Nacional do Seguro Social</h1>
-                    <p>Protegendo o futuro dos brasileiros</p>
-                </div>
+    <!-- Accessibility Bar -->
+    <div class="accessibility-bar">
+        <div class="container">
+            <div class="d-flex justify-content-end">
+                <button class="accessibility-btn" onclick="increaseFontSize()">A+</button>
+                <button class="accessibility-btn" onclick="decreaseFontSize()">A-</button>
+                <button class="accessibility-btn" onclick="toggleHighContrast()">Alto Contraste</button>
             </div>
-            <div class="header-actions">
-                <a href="#" class="btn-header" role="button">Meu INSS</a>
-                <a href="#" class="btn-header" role="button">Atendimento</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header-top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="logo-container">
+                        <div class="logo">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="logo-text">
+                            <h1>INSS</h1>
+                            <p>Instituto Nacional do Seguro Social</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-end">
+                    <button class="btn btn-outline-light">
+                        <i class="fas fa-user"></i> Meu INSS
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Navigation -->
-    <nav class="nav" role="navigation" aria-label="Menu principal">
-        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-        <div class="nav-overlay"></div>
-        <div class="nav-content">
-            <a href="#" class="nav-item">Serviços</a>
-            <a href="#" class="nav-item">Benefícios</a>
-            <a href="#" class="nav-item">Aposentadoria</a>
-            <a href="#" class="nav-item">Auxílios</a>
-            <a href="#" class="nav-item">Informações</a>
-            <a href="#" class="nav-item">Contato</a>
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-home me-2"></i>Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-calendar-check me-2"></i>Agendamentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-file-alt me-2"></i>Benefícios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-calculator me-2"></i>Simuladores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-question-circle me-2"></i>Ajuda</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" role="banner">
-        <div class="hero-content">
-            <h2>Seus direitos previdenciários em primeiro lugar</h2>
-            <p>Acesse seus benefícios, solicite serviços e encontre informações importantes de forma simples e rápida</p>
-        </div>
-    </section>
-
-    <!-- Quick Access -->
-    <section class="quick-access" role="main">
+    <section class="hero-section">
         <div class="container">
-            <h2 class="section-title">Serviços Mais Procurados</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon" aria-hidden="true">👤</div>
-                    <h3>Aposentadoria</h3>
-                    <p>Solicite sua aposentadoria ou consulte o andamento do seu processo</p>
-                    <a href="#" class="btn-primary" role="button">Acessar</a>
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title fade-in">Seus direitos previdenciários em suas mãos</h1>
+                    <p class="hero-subtitle fade-in stagger-1">Acesse todos os serviços do INSS de forma simples, rápida e segura. Consulte benefícios, agende atendimentos e tire suas dúvidas.</p>
+                    <div class="fade-in stagger-2">
+                        <button class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-play me-2"></i>Começar Agora
+                        </button>
+                        <button class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-info-circle me-2"></i>Saiba Mais
+                        </button>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon" aria-hidden="true">📄</div>
-                    <h3>Extrato Previdenciário</h3>
-                    <p>Consulte seu histórico de contribuições e tempo de serviço</p>
-                    <a href="#" class="btn-primary" role="button">Consultar</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon" aria-hidden="true">💰</div>
-                    <h3>Auxílio-Doença</h3>
-                    <p>Solicite auxílio-doença ou acompanhe sua solicitação</p>
-                    <a href="#" class="btn-primary" role="button">Solicitar</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon" aria-hidden="true">📊</div>
-                    <h3>Simulador</h3>
-                    <p>Simule sua aposentadoria e planeje seu futuro</p>
-                    <a href="#" class="btn-primary" role="button">Simular</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon" aria-hidden="true">🏥</div>
-                    <h3>Perícia Médica</h3>
-                    <p>Agende ou reagende sua perícia médica</p>
-                    <a href="#" class="btn-primary" role="button">Agendar</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon" aria-hidden="true">📞</div>
-                    <h3>Atendimento</h3>
-                    <p>Encontre agências ou fale conosco pelo telefone</p>
-                    <a href="#" class="btn-primary" role="button">Contatar</a>
+                <div class="col-lg-6 text-center">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjhGQUZDIiByeD0iMTYiLz4KPGNpcmNsZSBjeD0iMjAwIiBjeT0iMTAwIiByPSI0MCIgZmlsbD0iIzFFNDBBRiIvPgo8cmVjdCB4PSIxMDAiIHk9IjE2MCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzNCODJGNiIgcng9IjUiLz4KPHJlY3QgeD0iMTIwIiB5PSIxODAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMTAiIGZpbGw9IiM2NDc0OEIiIHJ4PSI1Ii8+CjxyZWN0IHg9IjE0MCIgeT0iMjAwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjMTBCOTgxIiByeD0iNSIvPgo8L3N2Zz4=" alt="Ilustração INSS" class="img-fluid fade-in stagger-3">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Search Section -->
-    <section class="search-section">
+    <!-- Quick Actions -->
+    <section class="quick-actions">
         <div class="container">
-            <div class="search-container">
-                <h3>Buscar Informações</h3>
-                <form class="search-form" role="search">
-                    <input type="search" class="search-input" placeholder="Digite o que você procura..." aria-label="Campo de busca">
-                    <button type="submit" class="btn-search">Buscar</button>
-                </form>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="action-card fade-in stagger-1">
+                        <div class="action-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Consultar Benefício</h3>
+                        <p>Verifique o status do seu benefício e histórico de pagamentos</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="action-card fade-in stagger-2">
+                        <div class="action-icon">
+                            <i class="fas fa-calendar-plus"></i>
+                        </div>
+                        <h3>Agendar Atendimento</h3>
+                        <p>Marque seu atendimento na agência mais próxima</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="action-card fade-in stagger-3">
+                        <div class="action-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Simular Aposentadoria</h3>
+                        <p>Calcule quando você poderá se aposentar</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="action-card fade-in stagger-4">
+                        <div class="action-icon">
+                            <i class="fas fa-file-download"></i>
+                        </div>
+                        <h3>Extratos e Declarações</h3>
+                        <p>Baixe seus documentos de forma digital</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- News Section -->
-    <section class="news-section">
+    <!-- Services Section -->
+    <section class="services-section">
         <div class="container">
-            <h2 class="section-title">Notícias e Atualizações</h2>
-            <div class="news-grid">
-                <article class="news-card">
-                    <div class="news-image" aria-hidden="true">📰</div>
-                    <div class="news-content">
-                        <time class="news-date" datetime="2025-06-01">01 de Junho, 2025</time>
-                        <h3 class="news-title">Novas Regras para Aposentadoria</h3>
-                        <p class="news-excerpt">Saiba mais sobre as atualizações nas regras de aposentadoria que entram em vigor neste mês.</p>
+            <h2 class="section-title">Principais Serviços</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="service-item fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-user-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Aposentadoria por Idade</h4>
+                            <p>Solicite sua aposentadoria por idade de forma online, sem precisar sair de casa.</p>
+                        </div>
                     </div>
-                </article>
-                <article class="news-card">
-                    <div class="news-image" aria-hidden="true">💻</div>
-                    <div class="news-content">
-                        <time class="news-date" datetime="2025-05-28">28 de Maio, 2025</time>
-                        <h3 class="news-title">Melhoria no Atendimento Digital</h3>
-                        <p class="news-excerpt">Sistema do Meu INSS recebe atualizações para melhorar a experiência do usuário.</p>
+                    <div class="service-item fade-in stagger-1">
+                        <div class="service-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div>
+                            <h4>Auxílio-Doença</h4>
+                            <p>Requeira auxílio-doença e acompanhe o andamento do seu processo.</p>
+                        </div>
                     </div>
-                </article>
-                <article class="news-card">
-                    <div class="news-image" aria-hidden="true">📅</div>
-                    <div class="news-content">
-                        <time class="news-date" datetime="2025-05-25">25 de Maio, 2025</time>
-                        <h3 class="news-title">Calendário de Pagamentos</h3>
-                        <p class="news-excerpt">Confira as datas de pagamento dos benefícios para o mês de junho.</p>
+                    <div class="service-item fade-in stagger-2">
+                        <div class="service-icon">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <div>
+                            <h4>Salário-Maternidade</h4>
+                            <p>Solicite o salário-maternidade de forma rápida e prática.</p>
+                        </div>
                     </div>
-                </article>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-item fade-in stagger-1">
+                        <div class="service-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div>
+                            <h4>Pensão por Morte</h4>
+                            <p>Requeira pensão por morte e receba orientações sobre documentação.</p>
+                        </div>
+                    </div>
+                    <div class="service-item fade-in stagger-2">
+                        <div class="service-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div>
+                            <h4>Revisão de Benefício</h4>
+                            <p>Solicite a revisão do seu benefício quando necessário.</p>
+                        </div>
+                    </div>
+                    <div class="service-item fade-in stagger-3">
+                        <div class="service-icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <div>
+                            <h4>Certidão de Tempo de Contribuição</h4>
+                            <p>Emita sua certidão de tempo de contribuição online.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Central 135</h4>
+                        <p>Atendimento telefônico gratuito de segunda a sábado, das 7h às 22h</p>
+                        <button class="btn btn-outline-primary">Ligar Agora</button>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="contact-card fade-in stagger-1">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Agências INSS</h4>
+                        <p>Encontre a agência mais próxima de você e seus horários de funcionamento</p>
+                        <button class="btn btn-outline-primary">Localizar</button>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="contact-card fade-in stagger-2">
+                        <div class="contact-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h4>Chat Online</h4>
+                        <p>Converse com nossos atendentes especializados através do chat</p>
+                        <button class="btn btn-outline-primary">Iniciar Chat</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer" role="contentinfo">
+    <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Serviços</h4>
-                    <ul>
-                        <li><a href="#">Aposentadoria</a></li>
-                        <li><a href="#">Auxílio-Doença</a></li>
-                        <li><a href="#">Pensão por Morte</a></li>
-                        <li><a href="#">Salário-Maternidade</a></li>
+            <div class="row">
+                <div class="col-lg-3 mb-4">
+                    <h5>INSS</h5>
+                    <p>Instituto Nacional do Seguro Social - Garantindo seus direitos previdenciários</p>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Serviços</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Benefícios</a></li>
+                        <li><a href="#">Agendamentos</a></li>
+                        <li><a href="#">Simuladores</a></li>
+                        <li><a href="#">Extratos</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Atendimento</h4>
-                    <ul>
-                        <li><a href="#">Central 135</a></li>
-                        <li><a href="#">Agências</a></li>
-                        <li><a href="#">Ouvidoria</a></li>
-                        <li><a href="#">Meu INSS</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Informações</h4>
-                    <ul>
+                <div class="col-lg-3 mb-4">
+                    <h5>Informações</h5>
+                    <ul class="list-unstyled">
                         <li><a href="#">Legislação</a></li>
                         <li><a href="#">Transparência</a></li>
-                        <li><a href="#">Dados Abertos</a></li>
-                        <li><a href="#">Perguntas Frequentes</a></li>
+                        <li><a href="#">Ouvidoria</a></li>
+                        <li><a href="#">Acessibilidade</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Institucional</h4>
-                    <ul>
-                        <li><a href="#">Sobre o INSS</a></li>
-                        <li><a href="#">Estrutura</a></li>
-                        <li><a href="#">Concursos</a></li>
-                        <li><a href="#">Notícias</a></li>
+                <div class="col-lg-3 mb-4">
+                    <h5>Contato</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> 135</li>
+                        <li><i class="fas fa-envelope me-2"></i> atendimento@inss.gov.br</li>
+                        <li><i class="fas fa-globe me-2"></i> www.inss.gov.br</li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Instituto Nacional do Seguro Social - INSS. Todos os direitos reservados.</p>
+            <hr class="my-4" style="border-color: #475569;">
+            <div class="text-center">
+                <p>&copy; 2024 INSS - Instituto Nacional do Seguro Social. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile Navigation
-            const navToggle = document.querySelector('.nav-toggle');
-            const navContent = document.querySelector('.nav-content');
-            const navOverlay = document.querySelector('.nav-overlay');
+        // Accessibility Functions
+        let fontSize = 100;
+        let highContrast = false;
 
-            function toggleNav() {
-                navContent.classList.toggle('active');
-                navOverlay.classList.toggle('active');
-                const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-                navToggle.setAttribute('aria-expanded', !isExpanded);
+        function increaseFontSize() {
+            fontSize += 10;
+            document.body.style.fontSize = fontSize + '%';
+        }
+
+        function decreaseFontSize() {
+            fontSize -= 10;
+            document.body.style.fontSize = fontSize + '%';
+        }
+
+        function toggleHighContrast() {
+            highContrast = !highContrast;
+            if (highContrast) {
+                document.body.style.filter = 'contrast(150%) brightness(90%)';
+            } else {
+                document.body.style.filter = 'none';
             }
+        }
 
-            navToggle.addEventListener('click', toggleNav);
-            navOverlay.addEventListener('click', toggleNav);
-
-            // Close nav when clicking on a link
-            const navLinks = document.querySelectorAll('.nav-item');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    navContent.classList.remove('active');
-                    navOverlay.classList.remove('active');
-                    navToggle.setAttribute('aria-expanded', 'false');
-                });
-            });
-
-            // Animação suave para scroll
-            const links = document.querySelectorAll('a[href^="#"]');
-            links.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // Aqui poderia adicionar scroll suave
-                });
-            });
-
-            // Feedback visual nos botões
-            const buttons = document.querySelectorAll('.btn-primary, .btn-header, .btn-search');
-            buttons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    // Feedback visual simples
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                });
-            });
-
-            // Simulação de busca
-            const searchForm = document.querySelector('.search-form');
-            searchForm.addEventListener('submit', function(e) {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const searchInput = this.querySelector('.search-input');
-                if (searchInput.value.trim()) {
-                    alert('Busca realizada: ' + searchInput.value);
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+
+        // Interactive hover effects for cards
+        document.querySelectorAll('.action-card, .contact-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
             });
         });
     </script>
