@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benefícios - INSS</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #3b82f6;
+            --accent-color: #10b981;
+            --light-bg: #f8fafc;
+            --dark-text: #1e293b;
+            --gray-text: #64748b;
+        }
+
+        .benefit-card {
+            border: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .requirements-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .requirements-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+        }
+
+        .requirements-list li i {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+
+        .benefit-header {
+            background: var(--light-bg);
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .benefit-search {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .status-active {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .status-pending {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header e Navegação (reutilizar do index.html) -->
+
+    <!-- Benefícios Header -->
+    <section class="benefit-header">
+        <div class="container">
+            <h1 class="text-center mb-4">Benefícios INSS</h1>
+            <div class="benefit-search">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Pesquisar benefícios...">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-search"></i> Buscar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lista de Benefícios -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Aposentadoria por Idade -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="benefit-card card">
+                        <div class="card-body">
+                            <div class="benefit-icon">
+                                <i class="fas fa-user-clock"></i>
+                            </div>
+                            <h3>Aposentadoria por Idade</h3>
+                            <span class="status-badge status-active mb-3 d-inline-block">
+                                Disponível Online
+                            </span>
+                            <p>Benefício concedido ao segurado que completar a idade mínima exigida e o tempo de contribuição necessário.</p>
+                            <h5>Requisitos Principais:</h5>
+                            <ul class="requirements-list mb-4">
+                                <li><i class="fas fa-check-circle"></i> Idade mínima: 65 anos (homens) / 62 anos (mulheres)</li>
+                                <li><i class="fas fa-check-circle"></i> 15 anos de contribuição</li>
+                                <li><i class="fas fa-check-circle"></i> Carência de 180 meses</li>
+                            </ul>
+                            <button class="btn btn-primary w-100">Solicitar Benefício</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aposentadoria por Tempo de Contribuição -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="benefit-card card">
+                        <div class="card-body">
+                            <div class="benefit-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <h3>Aposentadoria por Tempo de Contribuição</h3>
+                            <span class="status-badge status-active mb-3 d-inline-block">
+                                Disponível Online
+                            </span>
+                            <p>Benefício concedido aos segurados que completarem o tempo mínimo de contribuição exigido.</p>
+                            <h5>Requisitos Principais:</h5>
+                            <ul class="requirements-list mb-4">
+                                <li><i class="fas fa-check-circle"></i> 35 anos (homens) / 30 anos (mulheres)</li>
+                                <li><i class="fas fa-check-circle"></i> Pontuação mínima (idade + tempo)</li>
+                                <li><i class="fas fa-check-circle"></i> Carência conforme regra de transição</li>
+                            </ul>
+                            <button class="btn btn-primary w-100">Solicitar Benefício</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auxílio-Doença -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="benefit-card card">
+                        <div class="card-body">
+                            <div class="benefit-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <h3>Auxílio-Doença</h3>
+                            <span class="status-badge status-active mb-3 d-inline-block">
+                                Disponível Online
+                            </span>
+                            <p>Benefício para segurados temporariamente incapacitados para o trabalho por motivo de doença.</p>
+                            <h5>Requisitos Principais:</h5>
+                            <ul class="requirements-list mb-4">
+                                <li><i class="fas fa-check-circle"></i> Incapacidade comprovada</li>
+                                <li><i class="fas fa-check-circle"></i> 12 meses de contribuição</li>
+                                <li><i class="fas fa-check-circle"></i> Perícia médica</li>
+                            </ul>
+                            <button class="btn btn-primary w-100">Solicitar Benefício</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Salário-Maternidade -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="benefit-card card">
+                        <div class="card-body">
+                            <div class="benefit-icon">
+                                <i class="fas fa-baby"></i>
+                            </div>
+                            <h3>Salário-Maternidade</h3>
+                            <span class="status-badge status-active mb-3 d-inline-block">
+                                Disponível Online
+                            </span>
+                            <p>Benefício concedido à segurada em razão de nascimento de filho, adoção ou aborto não criminoso.</p>
+                            <h5>Requisitos Principais:</h5>
+                            <ul class="requirements-list mb-4">
+                                <li><i class="fas fa-check-circle"></i> Qualidade de segurada</li>
+                                <li><i class="fas fa-check-circle"></i> 10 meses de contribuição</li>
+                                <li><i class="fas fa-check-circle"></i> Documentação comprobatória</li>
+                            </ul>
+                            <button class="btn btn-primary w-100">Solicitar Benefício</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pensão por Morte -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="benefit-card card">
+                        <div class="card-body">
+                            <div class="benefit-icon">
+                                <i class="fas fa-heart-broken"></i>
+                            </div>
+                            <h3>Pensão por Morte</h3>
+                            <span class="status-badge status-active mb-3 d-inline-block">
+                                Disponível Online
+                            </span>
+                            <p>Benefício pago aos dependentes do segurado que falecer.</p>
+                            <h5>Requisitos Principais:</h5>
+                            <ul class="requirements-list mb-4">
+                                <li><i class="fas fa-check-circle"></i> Qualidade de dependente</li>
+                                <li><i class="fas fa-check-circle"></i> Comprovação do óbito</li>
+                                <li><i class="fas fa-check-circle"></i> Documentação de vínculo</li>
+                            </ul>
+                            <button class="btn btn-primary w-100">Solicitar Benefício</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auxílio-Acidente -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="benefit-card card">
+                        <div class="card-body">
+                            <div class="benefit-icon">
+                                <i class="fas fa-band-aid"></i>
+                            </div>
+                            <h3>Auxílio-Acidente</h3>
+                            <span class="status-badge status-pending mb-3 d-inline-block">
+                                Requer Perícia
+                            </span>
+                            <p>Benefício pago ao segurado que sofre acidente e fica com sequelas que reduzem sua capacidade de trabalho.</p>
+                            <h5>Requisitos Principais:</h5>
+                            <ul class="requirements-list mb-4">
+                                <li><i class="fas fa-check-circle"></i> Acidente comprovado</li>
+                                <li><i class="fas fa-check-circle"></i> Sequela permanente</li>
+                                <li><i class="fas fa-check-circle"></i> Perícia médica</li>
+                            </ul>
+                            <button class="btn btn-primary w-100">Solicitar Benefício</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (reutilizar do index.html) -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

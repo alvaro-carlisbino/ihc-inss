@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajuda e FAQ - INSS</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #3b82f6;
+            --accent-color: #10b981;
+            --light-bg: #f8fafc;
+            --dark-text: #1e293b;
+            --gray-text: #64748b;
+        }
+
+        .help-header {
+            background: var(--light-bg);
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .help-search {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        .help-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .help-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 24px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 20px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--dark-text);
+            font-weight: 500;
+        }
+
+        .faq-answer {
+            display: none;
+            padding-top: 15px;
+            color: var(--gray-text);
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-method {
+            text-align: center;
+            padding: 20px;
+            background: var(--light-bg);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .help-topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .topic-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .topic-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header e Navegação (reutilizar do index.html) -->
+
+    <!-- Help Header -->
+    <section class="help-header">
+        <div class="container">
+            <h1 class="text-center mb-4">Central de Ajuda</h1>
+            <div class="help-search">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Como podemos ajudar?">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-search"></i> Buscar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Content -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Tópicos Populares -->
+            <h3 class="text-center mb-4">Tópicos Populares</h3>
+            <div class="help-topics">
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h5>Agendamentos</h5>
+                    <p class="text-muted">Como agendar atendimento</p>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h5>Benefícios</h5>
+                    <p class="text-muted">Cálculos e valores</p>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h5>Documentação</h5>
+                    <p class="text-muted">Documentos necessários</p>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h5>Prazos</h5>
+                    <p class="text-muted">Tempos de espera</p>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="help-card">
+                <h3 class="text-center mb-4">Perguntas Frequentes</h3>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como faço para solicitar aposentadoria?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Para solicitar aposentadoria, você pode:</p>
+                        <ol>
+                            <li>Acessar o portal Meu INSS</li>
+                            <li>Fazer login com sua conta gov.br</li>
+                            <li>Clicar em "Novo Pedido"</li>
+                            <li>Selecionar "Aposentadoria"</li>
+                            <li>Seguir as instruções na tela</li>
+                        </ol>
+                        <p>Você também pode agendar atendimento presencial em uma agência do INSS.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Qual o tempo mínimo de contribuição para aposentadoria?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O tempo mínimo de contribuição varia conforme o tipo de aposentadoria:</p>
+                        <ul>
+                            <li>Aposentadoria por idade: 15 anos</li>
+                            <li>Aposentadoria por tempo de contribuição: 35 anos (homens) e 30 anos (mulheres)</li>
+                        </ul>
+                        <p>Consulte um simulador para verificar sua situação específica.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como acompanhar o andamento do meu benefício?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Você pode acompanhar seu benefício de várias formas:</p>
+                        <ul>
+                            <li>Pelo portal Meu INSS</li>
+                            <li>Pelo aplicativo Meu INSS</li>
+                            <li>Ligando para a Central 135</li>
+                        </ul>
+                        <p>Tenha em mãos o número do protocolo para facilitar a consulta.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quais documentos preciso levar para perícia médica?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Para a perícia médica, você deve apresentar:</p>
+                        <ul>
+                            <li>Documento de identificação com foto</li>
+                            <li>Exames médicos recentes</li>
+                            <li>Laudos médicos detalhados</li>
+                            <li>Receitas médicas</li>
+                            <li>Atestados médicos</li>
+                        </ul>
+                        <p>Recomendamos levar todos os documentos médicos relacionados à sua condição.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Métodos de Contato -->
+            <div class="help-card">
+                <h3 class="text-center mb-4">Entre em Contato</h3>
+                <p class="text-center text-muted">Escolha o canal de atendimento mais conveniente para você</p>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h5>Central 135</h5>
+                        <p>Segunda a sábado, das 7h às 22h</p>
+                        <button class="btn btn-outline-primary">Ligar Agora</button>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h5>Chat Online</h5>
+                        <p>Atendimento em tempo real</p>
+                        <button class="btn btn-outline-primary">Iniciar Chat</button>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h5>E-mail</h5>
+                        <p>Resposta em até 48 horas</p>
+                        <button class="btn btn-outline-primary">Enviar E-mail</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (reutilizar do index.html) -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle FAQ answers
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                answer.classList.toggle('active');
+                icon.classList.toggle('fa-chevron-up');
+                icon.classList.toggle('fa-chevron-down');
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.help-search input');
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            // Search in FAQ questions
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

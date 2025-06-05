@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos - INSS</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #3b82f6;
+            --accent-color: #10b981;
+            --light-bg: #f8fafc;
+            --dark-text: #1e293b;
+            --gray-text: #64748b;
+        }
+
+        .schedule-header {
+            background: var(--light-bg);
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .schedule-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .schedule-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background: var(--light-bg);
+            transition: all 0.3s ease;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .schedule-step.active {
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .schedule-step.completed {
+            background: #f0fdf4;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .schedule-form label {
+            font-weight: 500;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+
+        .schedule-form .form-control {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .schedule-form .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .time-slot {
+            padding: 10px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .time-slot:hover {
+            background: var(--light-bg);
+        }
+
+        .time-slot.selected {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .confirmation-details {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .confirmation-details p {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .confirmation-details strong {
+            color: var(--dark-text);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header e Navegação (reutilizar do index.html) -->
+
+    <!-- Agendamento Header -->
+    <section class="schedule-header">
+        <div class="container">
+            <h1 class="text-center mb-4">Agendar Atendimento</h1>
+            <p class="text-center text-muted">Escolha o serviço desejado e agende seu atendimento em uma de nossas unidades</p>
+        </div>
+    </section>
+
+    <!-- Processo de Agendamento -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- Passos do Agendamento -->
+                    <div class="schedule-card">
+                        <h4 class="mb-4">Etapas do Agendamento</h4>
+                        <div class="schedule-step active">
+                            <div class="step-number">1</div>
+                            <div>
+                                <h5 class="mb-1">Selecionar Serviço</h5>
+                                <p class="mb-0 text-muted">Escolha o serviço desejado</p>
+                            </div>
+                        </div>
+                        <div class="schedule-step">
+                            <div class="step-number">2</div>
+                            <div>
+                                <h5 class="mb-1">Escolher Local</h5>
+                                <p class="mb-0 text-muted">Selecione a unidade de atendimento</p>
+                            </div>
+                        </div>
+                        <div class="schedule-step">
+                            <div class="step-number">3</div>
+                            <div>
+                                <h5 class="mb-1">Data e Hora</h5>
+                                <p class="mb-0 text-muted">Escolha o melhor horário</p>
+                            </div>
+                        </div>
+                        <div class="schedule-step">
+                            <div class="step-number">4</div>
+                            <div>
+                                <h5 class="mb-1">Confirmação</h5>
+                                <p class="mb-0 text-muted">Revise e confirme seu agendamento</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Informações Adicionais -->
+                    <div class="schedule-card">
+                        <h4 class="mb-4">Informações Importantes</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <i class="fas fa-info-circle text-primary me-2"></i>
+                                Chegue com 15 minutos de antecedência
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-id-card text-primary me-2"></i>
+                                Traga um documento com foto
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-file-alt text-primary me-2"></i>
+                                Documentos necessários variam por serviço
+                            </li>
+                            <li>
+                                <i class="fas fa-clock text-primary me-2"></i>
+                                Tempo médio de atendimento: 30 minutos
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <!-- Formulário de Agendamento -->
+                    <div class="schedule-card">
+                        <form class="schedule-form">
+                            <!-- Etapa 1: Seleção de Serviço -->
+                            <div class="step-content active">
+                                <h4 class="mb-4">Selecione o Serviço</h4>
+                                <div class="mb-4">
+                                    <select class="form-select form-control">
+                                        <option selected disabled>Escolha um serviço...</option>
+                                        <option>Perícia Médica</option>
+                                        <option>Aposentadoria</option>
+                                        <option>Auxílio-Doença</option>
+                                        <option>Pensão por Morte</option>
+                                        <option>Salário-Maternidade</option>
+                                        <option>Outros Serviços</option>
+                                    </select>
+                                </div>
+
+                                <!-- Etapa 2: Localização -->
+                                <h4 class="mb-4">Selecione a Unidade</h4>
+                                <div class="mb-4">
+                                    <input type="text" class="form-control mb-3" placeholder="Digite seu CEP">
+                                    <select class="form-select form-control">
+                                        <option selected disabled>Escolha uma unidade próxima...</option>
+                                        <option>INSS - Centro</option>
+                                        <option>INSS - Zona Sul</option>
+                                        <option>INSS - Zona Norte</option>
+                                        <option>INSS - Zona Leste</option>
+                                        <option>INSS - Zona Oeste</option>
+                                    </select>
+                                </div>
+
+                                <!-- Etapa 3: Data e Hora -->
+                                <h4 class="mb-4">Escolha a Data e Horário</h4>
+                                <div class="mb-4">
+                                    <input type="text" class="form-control mb-3 datepicker" placeholder="Selecione a data">
+                                    <div class="time-slots d-flex flex-wrap">
+                                        <div class="time-slot">09:00</div>
+                                        <div class="time-slot">09:30</div>
+                                        <div class="time-slot">10:00</div>
+                                        <div class="time-slot">10:30</div>
+                                        <div class="time-slot">11:00</div>
+                                        <div class="time-slot">11:30</div>
+                                        <div class="time-slot">14:00</div>
+                                        <div class="time-slot">14:30</div>
+                                        <div class="time-slot">15:00</div>
+                                        <div class="time-slot">15:30</div>
+                                    </div>
+                                </div>
+
+                                <!-- Etapa 4: Confirmação -->
+                                <h4 class="mb-4">Confirme seus Dados</h4>
+                                <div class="confirmation-details">
+                                    <p>
+                                        <span>Serviço:</span>
+                                        <strong>Perícia Médica</strong>
+                                    </p>
+                                    <p>
+                                        <span>Local:</span>
+                                        <strong>INSS - Centro</strong>
+                                    </p>
+                                    <p>
+                                        <span>Data:</span>
+                                        <strong>15/06/2024</strong>
+                                    </p>
+                                    <p>
+                                        <span>Horário:</span>
+                                        <strong>09:30</strong>
+                                    </p>
+                                </div>
+
+                                <div class="mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                                        Confirmar Agendamento
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (reutilizar do index.html) -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        // Inicialização do datepicker
+        flatpickr(".datepicker", {
+            dateFormat: "d/m/Y",
+            minDate: "today",
+            locale: "pt",
+            disable: [
+                function(date) {
+                    // Desabilita finais de semana
+                    return (date.getDay() === 0 || date.getDay() === 6);
+                }
+            ]
+        });
+
+        // Seleção de horários
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.addEventListener('click', function() {
+                document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Navegação entre etapas
+        document.querySelectorAll('.schedule-step').forEach((step, index) => {
+            step.addEventListener('click', function() {
+                document.querySelectorAll('.schedule-step').forEach(s => s.classList.remove('active'));
+                for (let i = 0; i <= index; i++) {
+                    document.querySelectorAll('.schedule-step')[i].classList.add('completed');
+                }
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html> 
