@@ -6,6 +6,7 @@
     <title>Benefícios - INSS</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
     <style>
         :root {
             --primary-color: #1e40af;
@@ -89,10 +90,122 @@
             background-color: #fef3c7;
             color: #92400e;
         }
+
+        /* Accessibility Features */
+        .accessibility-bar {
+            background: #f1f5f9;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .accessibility-btn {
+            background: none;
+            border: 1px solid #cbd5e1;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .accessibility-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Header Styles */
+        .header-top {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 15px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer h5 {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <!-- Header e Navegação (reutilizar do index.html) -->
+    <!-- Accessibility Bar -->
+    <div class="accessibility-bar">
+        <div class="container">
+            <div class="d-flex justify-content-end">
+                <button class="accessibility-btn" onclick="increaseFontSize()">A+</button>
+                <button class="accessibility-btn" onclick="decreaseFontSize()">A-</button>
+                <button class="accessibility-btn" onclick="toggleHighContrast()">Alto Contraste</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header-top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="logo-container">
+                        <div class="logo">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="logo-text">
+                            <h1>INSS</h1>
+                            <p>Instituto Nacional do Seguro Social</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <!-- Benefícios Header -->
     <section class="benefit-header">
@@ -258,8 +371,49 @@
         </div>
     </section>
 
-    <!-- Footer (reutilizar do index.html) -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 mb-4">
+                    <h5>INSS</h5>
+                    <p>Instituto Nacional do Seguro Social - Garantindo seus direitos previdenciários</p>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Serviços</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Benefícios</a></li>
+                        <li><a href="#">Agendamentos</a></li>
+                        <li><a href="#">Simuladores</a></li>
+                        <li><a href="#">Extratos</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Informações</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Legislação</a></li>
+                        <li><a href="#">Transparência</a></li>
+                        <li><a href="#">Ouvidoria</a></li>
+                        <li><a href="#">Acessibilidade</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Contato</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> 135</li>
+                        <li><i class="fas fa-envelope me-2"></i> atendimento@inss.gov.br</li>
+                        <li><i class="fas fa-globe me-2"></i> www.inss.gov.br</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: #475569;">
+            <div class="text-center">
+                <p>&copy; 2024 INSS - Instituto Nacional do Seguro Social. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html> 

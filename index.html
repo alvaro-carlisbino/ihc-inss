@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INSS - Instituto Nacional do Seguro Social</title>
+    <title>Início - INSS</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -348,42 +348,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 text-end">
-                    <a href="login.html" class="btn btn-outline-light">
-                        <i class="fas fa-user"></i> Meu INSS
-                    </a>
-                </div>
             </div>
         </div>
     </header>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html"><i class="fas fa-home me-2"></i>Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="agendamentos.html"><i class="fas fa-calendar-check me-2"></i>Agendamentos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="beneficios.html"><i class="fas fa-file-alt me-2"></i>Benefícios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="simuladores.html"><i class="fas fa-calculator me-2"></i>Simuladores</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ajuda.html"><i class="fas fa-question-circle me-2"></i>Ajuda</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div id="navbar-container"></div>
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -600,6 +570,7 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
     <script>
         // Accessibility Functions
         let fontSize = 100;
@@ -651,6 +622,60 @@
             
             card.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Initialize accessibility features
+        const accessibility = INSS.setupAccessibility();
+
+        // Update notification list
+        function updateNotificationList() {
+            const container = document.querySelector('.notification-list');
+            container.innerHTML = '';
+
+            INSS.notifications.slice(0, 5).forEach(notification => {
+                const item = document.createElement('li');
+                item.innerHTML = `
+                    <a class="dropdown-item" href="#">
+                        <small class="text-muted">${new Date(notification.date).toLocaleString('pt-BR')}</small>
+                        <p class="mb-0">${notification.message}</p>
+                    </a>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        // Initialize notifications
+        document.addEventListener('DOMContentLoaded', () => {
+            updateNotificationList();
+        });
+
+        // Quick action cards interaction
+        document.querySelectorAll('.action-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('h3').textContent;
+                switch(title) {
+                    case 'Consultar Benefício':
+                        window.location.href = 'beneficios.html';
+                        break;
+                    case 'Agendar Atendimento':
+                        window.location.href = 'agendamentos.html';
+                        break;
+                    case 'Simular Aposentadoria':
+                        window.location.href = 'simuladores.html';
+                        break;
+                    case 'Extratos e Declarações':
+                        addNotification('Seus documentos estão sendo preparados para download.');
+                        break;
+                }
+            });
+        });
+
+        // Service items interaction
+        document.querySelectorAll('.service-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const title = this.querySelector('h4').textContent;
+                window.location.href = `beneficios.html#${title.toLowerCase().replace(/\s+/g, '-')}`;
             });
         });
     </script>
