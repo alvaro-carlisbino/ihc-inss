@@ -102,4 +102,212 @@ body {
 .stagger-1 { animation-delay: 0.1s; }
 .stagger-2 { animation-delay: 0.2s; }
 .stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; } 
+.stagger-4 { animation-delay: 0.4s; }
+
+/* Card Grid System */
+.row.g-4 {
+    --bs-gutter-x: 2rem;
+    --bs-gutter-y: 2rem;
+}
+
+/* Card Base Styles */
+.card {
+    border: none;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.card-body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Quick Actions Cards */
+.quick-actions {
+    margin-top: -40px;
+    position: relative;
+    z-index: 3;
+    padding: 0 15px;
+}
+
+.action-card {
+    display: block;
+    text-decoration: none;
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    color: inherit;
+}
+
+.action-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    color: inherit;
+}
+
+.action-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+    color: white;
+}
+
+.action-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--dark-text);
+}
+
+.action-card p {
+    color: var(--gray-text);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Benefit Cards */
+.benefit-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.requirements-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.requirements-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.requirements-list li:last-child {
+    border-bottom: none;
+}
+
+.requirements-list li i {
+    color: var(--accent-color);
+    flex-shrink: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .action-card {
+        padding: 25px;
+    }
+    
+    .action-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.75rem;
+    }
+    
+    .action-card h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .quick-actions {
+        margin-top: -20px;
+    }
+    
+    .row.g-4 {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .quick-actions {
+        margin-top: 20px;
+    }
+    
+    .action-card {
+        padding: 20px;
+    }
+    
+    .action-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .action-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .row.g-4 {
+        --bs-gutter-x: 1rem;
+        --bs-gutter-y: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .quick-actions {
+        padding: 0 10px;
+    }
+    
+    .action-card {
+        padding: 15px;
+    }
+    
+    .action-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+        margin-bottom: 15px;
+    }
+    
+    .action-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    
+    .action-card p {
+        font-size: 0.9rem;
+    }
+} 

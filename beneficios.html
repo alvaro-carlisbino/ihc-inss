@@ -207,6 +207,50 @@
         </div>
     </header>
 
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home me-2"></i>Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agendamentos.html"><i class="fas fa-calendar-check me-2"></i>Agendamentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="beneficios.html"><i class="fas fa-file-alt me-2"></i>Benefícios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="simuladores.html"><i class="fas fa-calculator me-2"></i>Simuladores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ajuda.html"><i class="fas fa-question-circle me-2"></i>Ajuda</a>
+                    </li>
+                </ul>
+                <div class="position-relative d-inline-block">
+                    <button class="btn btn-outline-primary position-relative" data-bs-toggle="dropdown">
+                        <i class="fas fa-bell"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notification-badge" style="display: none;">
+                            0
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end notification-menu" style="width: 300px;">
+                        <li><h6 class="dropdown-header">Notificações</h6></li>
+                        <div class="notification-list" style="max-height: 300px; overflow-y: auto;">
+                            <!-- Notifications will be inserted here -->
+                        </div>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-center" href="#">Ver todas</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <!-- Benefícios Header -->
     <section class="benefit-header">
         <div class="container">
@@ -229,118 +273,118 @@
     <!-- Lista de Benefícios -->
     <section class="py-5">
         <div class="container">
-            <div class="row">
+            <div class="row g-4">
                 <!-- Aposentadoria por Idade -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="benefit-card card">
-                        <div class="card-body">
+                    <div class="benefit-card card h-100">
+                        <div class="card-body d-flex flex-column">
                             <div class="benefit-icon">
                                 <i class="fas fa-user-clock"></i>
                             </div>
-                            <h3>Aposentadoria por Idade</h3>
+                            <h3 class="h4 mb-3">Aposentadoria por Idade</h3>
                             <span class="status-badge status-active mb-3 d-inline-block">
                                 Disponível Online
                             </span>
                             <p>Benefício concedido ao segurado que completar a idade mínima exigida e o tempo de contribuição necessário.</p>
-                            <h5>Requisitos Principais:</h5>
+                            <h5 class="mt-3">Requisitos Principais:</h5>
                             <ul class="requirements-list mb-4">
                                 <li><i class="fas fa-check-circle"></i> Idade mínima: 65 anos (homens) / 62 anos (mulheres)</li>
                                 <li><i class="fas fa-check-circle"></i> 15 anos de contribuição</li>
                                 <li><i class="fas fa-check-circle"></i> Carência de 180 meses</li>
                             </ul>
-                            <button class="btn btn-primary w-100">Solicitar Benefício</button>
+                            <button class="btn btn-primary w-100 mt-auto">Solicitar Benefício</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Aposentadoria por Tempo de Contribuição -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="benefit-card card">
-                        <div class="card-body">
+                    <div class="benefit-card card h-100">
+                        <div class="card-body d-flex flex-column">
                             <div class="benefit-icon">
                                 <i class="fas fa-calendar-check"></i>
                             </div>
-                            <h3>Aposentadoria por Tempo de Contribuição</h3>
+                            <h3 class="h4 mb-3">Aposentadoria por Tempo de Contribuição</h3>
                             <span class="status-badge status-active mb-3 d-inline-block">
                                 Disponível Online
                             </span>
                             <p>Benefício concedido aos segurados que completarem o tempo mínimo de contribuição exigido.</p>
-                            <h5>Requisitos Principais:</h5>
+                            <h5 class="mt-3">Requisitos Principais:</h5>
                             <ul class="requirements-list mb-4">
                                 <li><i class="fas fa-check-circle"></i> 35 anos (homens) / 30 anos (mulheres)</li>
                                 <li><i class="fas fa-check-circle"></i> Pontuação mínima (idade + tempo)</li>
                                 <li><i class="fas fa-check-circle"></i> Carência conforme regra de transição</li>
                             </ul>
-                            <button class="btn btn-primary w-100">Solicitar Benefício</button>
+                            <button class="btn btn-primary w-100 mt-auto">Solicitar Benefício</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Auxílio-Doença -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="benefit-card card">
-                        <div class="card-body">
+                    <div class="benefit-card card h-100">
+                        <div class="card-body d-flex flex-column">
                             <div class="benefit-icon">
                                 <i class="fas fa-heartbeat"></i>
                             </div>
-                            <h3>Auxílio-Doença</h3>
+                            <h3 class="h4 mb-3">Auxílio-Doença</h3>
                             <span class="status-badge status-active mb-3 d-inline-block">
                                 Disponível Online
                             </span>
                             <p>Benefício para segurados temporariamente incapacitados para o trabalho por motivo de doença.</p>
-                            <h5>Requisitos Principais:</h5>
+                            <h5 class="mt-3">Requisitos Principais:</h5>
                             <ul class="requirements-list mb-4">
                                 <li><i class="fas fa-check-circle"></i> Incapacidade comprovada</li>
                                 <li><i class="fas fa-check-circle"></i> 12 meses de contribuição</li>
                                 <li><i class="fas fa-check-circle"></i> Perícia médica</li>
                             </ul>
-                            <button class="btn btn-primary w-100">Solicitar Benefício</button>
+                            <button class="btn btn-primary w-100 mt-auto">Solicitar Benefício</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Salário-Maternidade -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="benefit-card card">
-                        <div class="card-body">
+                    <div class="benefit-card card h-100">
+                        <div class="card-body d-flex flex-column">
                             <div class="benefit-icon">
                                 <i class="fas fa-baby"></i>
                             </div>
-                            <h3>Salário-Maternidade</h3>
+                            <h3 class="h4 mb-3">Salário-Maternidade</h3>
                             <span class="status-badge status-active mb-3 d-inline-block">
                                 Disponível Online
                             </span>
                             <p>Benefício concedido à segurada em razão de nascimento de filho, adoção ou aborto não criminoso.</p>
-                            <h5>Requisitos Principais:</h5>
+                            <h5 class="mt-3">Requisitos Principais:</h5>
                             <ul class="requirements-list mb-4">
                                 <li><i class="fas fa-check-circle"></i> Qualidade de segurada</li>
                                 <li><i class="fas fa-check-circle"></i> 10 meses de contribuição</li>
                                 <li><i class="fas fa-check-circle"></i> Documentação comprobatória</li>
                             </ul>
-                            <button class="btn btn-primary w-100">Solicitar Benefício</button>
+                            <button class="btn btn-primary w-100 mt-auto">Solicitar Benefício</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Pensão por Morte -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="benefit-card card">
-                        <div class="card-body">
+                    <div class="benefit-card card h-100">
+                        <div class="card-body d-flex flex-column">
                             <div class="benefit-icon">
                                 <i class="fas fa-heart-broken"></i>
                             </div>
-                            <h3>Pensão por Morte</h3>
+                            <h3 class="h4 mb-3">Pensão por Morte</h3>
                             <span class="status-badge status-active mb-3 d-inline-block">
                                 Disponível Online
                             </span>
                             <p>Benefício pago aos dependentes do segurado que falecer.</p>
-                            <h5>Requisitos Principais:</h5>
+                            <h5 class="mt-3">Requisitos Principais:</h5>
                             <ul class="requirements-list mb-4">
                                 <li><i class="fas fa-check-circle"></i> Qualidade de dependente</li>
                                 <li><i class="fas fa-check-circle"></i> Comprovação do óbito</li>
                                 <li><i class="fas fa-check-circle"></i> Documentação de vínculo</li>
                             </ul>
-                            <button class="btn btn-primary w-100">Solicitar Benefício</button>
+                            <button class="btn btn-primary w-100 mt-auto">Solicitar Benefício</button>
                         </div>
                     </div>
                 </div>

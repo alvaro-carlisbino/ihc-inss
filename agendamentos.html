@@ -234,6 +234,50 @@
         </div>
     </header>
 
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home me-2"></i>Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="agendamentos.html"><i class="fas fa-calendar-check me-2"></i>Agendamentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="beneficios.html"><i class="fas fa-file-alt me-2"></i>Benefícios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="simuladores.html"><i class="fas fa-calculator me-2"></i>Simuladores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ajuda.html"><i class="fas fa-question-circle me-2"></i>Ajuda</a>
+                    </li>
+                </ul>
+                <div class="position-relative d-inline-block">
+                    <button class="btn btn-outline-primary position-relative" data-bs-toggle="dropdown">
+                        <i class="fas fa-bell"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notification-badge" style="display: none;">
+                            0
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end notification-menu" style="width: 300px;">
+                        <li><h6 class="dropdown-header">Notificações</h6></li>
+                        <div class="notification-list" style="max-height: 300px; overflow-y: auto;">
+                            <!-- Notifications will be inserted here -->
+                        </div>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-center" href="#">Ver todas</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <!-- Agendamento Header -->
     <section class="schedule-header">
         <div class="container">
@@ -307,80 +351,51 @@
                 <div class="col-lg-8">
                     <!-- Formulário de Agendamento -->
                     <div class="schedule-card">
-                        <form class="schedule-form">
-                            <!-- Etapa 1: Seleção de Serviço -->
-                            <div class="step-content active">
-                                <h4 class="mb-4">Selecione o Serviço</h4>
-                                <div class="mb-4">
-                                    <select class="form-select form-control" name="service">
-                                        <option selected disabled>Escolha um serviço...</option>
-                                        <option>Perícia Médica</option>
-                                        <option>Aposentadoria</option>
-                                        <option>Auxílio-Doença</option>
-                                        <option>Pensão por Morte</option>
-                                        <option>Salário-Maternidade</option>
-                                        <option>Outros Serviços</option>
+                        <form action="agendamentos.html" method="get" class="appointment-form">
+                            <div class="schedule-step active">
+                                <h4>1. Selecione o Serviço</h4>
+                                <select name="service" class="form-select mb-3" required>
+                                    <option value="">Escolha um serviço...</option>
+                                    <option value="aposentadoria">Aposentadoria</option>
+                                    <option value="auxilio">Auxílio-Doença</option>
+                                    <option value="pensao">Pensão por Morte</option>
+                                    <option value="salario">Salário-Maternidade</option>
+                                </select>
+                            </div>
+
+                            <div class="schedule-step">
+                                <h4>2. Escolha a Unidade</h4>
+                                <select name="location" class="form-select mb-3" required>
+                                    <option value="">Escolha uma unidade...</option>
+                                    <option value="centro">INSS Centro</option>
+                                    <option value="norte">INSS Zona Norte</option>
+                                    <option value="sul">INSS Zona Sul</option>
+                                    <option value="leste">INSS Zona Leste</option>
+                                </select>
+                            </div>
+
+                            <div class="schedule-step">
+                                <h4>3. Selecione Data e Hora</h4>
+                                <div class="mb-3">
+                                    <label class="form-label">Data do Agendamento</label>
+                                    <input type="date" name="date" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Horário</label>
+                                    <select name="time" class="form-select" required>
+                                        <option value="">Escolha um horário...</option>
+                                        <option value="0900">09:00</option>
+                                        <option value="1000">10:00</option>
+                                        <option value="1100">11:00</option>
+                                        <option value="1400">14:00</option>
+                                        <option value="1500">15:00</option>
+                                        <option value="1600">16:00</option>
                                     </select>
                                 </div>
+                            </div>
 
-                                <!-- Etapa 2: Localização -->
-                                <h4 class="mb-4">Selecione a Unidade</h4>
-                                <div class="mb-4">
-                                    <input type="text" class="form-control mb-3" placeholder="Digite seu CEP" name="cep">
-                                    <select class="form-select form-control" name="location">
-                                        <option selected disabled>Escolha uma unidade próxima...</option>
-                                        <option>INSS - Centro</option>
-                                        <option>INSS - Zona Sul</option>
-                                        <option>INSS - Zona Norte</option>
-                                        <option>INSS - Zona Leste</option>
-                                        <option>INSS - Zona Oeste</option>
-                                    </select>
-                                </div>
-
-                                <!-- Etapa 3: Data e Hora -->
-                                <h4 class="mb-4">Escolha a Data e Horário</h4>
-                                <div class="mb-4">
-                                    <input type="text" class="form-control mb-3 datepicker" placeholder="Selecione a data">
-                                    <div class="time-slots d-flex flex-wrap">
-                                        <div class="time-slot">09:00</div>
-                                        <div class="time-slot">09:30</div>
-                                        <div class="time-slot">10:00</div>
-                                        <div class="time-slot">10:30</div>
-                                        <div class="time-slot">11:00</div>
-                                        <div class="time-slot">11:30</div>
-                                        <div class="time-slot">14:00</div>
-                                        <div class="time-slot">14:30</div>
-                                        <div class="time-slot">15:00</div>
-                                        <div class="time-slot">15:30</div>
-                                    </div>
-                                </div>
-
-                                <!-- Etapa 4: Confirmação -->
-                                <h4 class="mb-4">Confirme seus Dados</h4>
-                                <div class="confirmation-details">
-                                    <p>
-                                        <span>Serviço:</span>
-                                        <strong>Perícia Médica</strong>
-                                    </p>
-                                    <p>
-                                        <span>Local:</span>
-                                        <strong>INSS - Centro</strong>
-                                    </p>
-                                    <p>
-                                        <span>Data:</span>
-                                        <strong>15/06/2024</strong>
-                                    </p>
-                                    <p>
-                                        <span>Horário:</span>
-                                        <strong>09:30</strong>
-                                    </p>
-                                </div>
-
-                                <div class="mt-4">
-                                    <button type="submit" class="btn btn-primary btn-lg w-100">
-                                        Confirmar Agendamento
-                                    </button>
-                                </div>
+                            <div class="confirmation-details mt-4">
+                                <button type="submit" class="btn btn-primary w-100">Confirmar Agendamento</button>
                             </div>
                         </form>
                     </div>
@@ -434,135 +449,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="js/main.js"></script>
-    <script>
-        // Initialize accessibility features
-        const accessibility = INSS.setupAccessibility();
-
-        // Initialize datepicker
-        flatpickr(".datepicker", {
-            dateFormat: "d/m/Y",
-            minDate: "today",
-            locale: "pt",
-            disable: [
-                function(date) {
-                    // Disable weekends
-                    return (date.getDay() === 0 || date.getDay() === 6);
-                }
-            ],
-            onChange: function(selectedDates, dateStr) {
-                selectedDate = dateStr;
-                // Enable time slots when date is selected
-                document.querySelectorAll('.time-slot').forEach(slot => {
-                    slot.style.opacity = '1';
-                    slot.style.pointerEvents = 'auto';
-                });
-                updateConfirmationDetails();
-            }
-        });
-
-        let currentStep = 1;
-        let selectedService = '';
-        let selectedLocation = '';
-        let selectedDate = '';
-        let selectedTime = '';
-
-        // Service selection
-        document.querySelector('select[name="service"]').addEventListener('change', function(e) {
-            selectedService = e.target.value;
-            updateConfirmationDetails();
-            if (selectedService) {
-                goToStep(2);
-            }
-        });
-
-        // Location selection
-        document.querySelector('select[name="location"]').addEventListener('change', function(e) {
-            selectedLocation = e.target.value;
-            updateConfirmationDetails();
-            if (selectedLocation) {
-                goToStep(3);
-            }
-        });
-
-        // Time slot selection
-        document.querySelectorAll('.time-slot').forEach(slot => {
-            slot.addEventListener('click', function() {
-                document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
-                this.classList.add('selected');
-                selectedTime = this.textContent;
-                updateConfirmationDetails();
-                goToStep(4);
-            });
-        });
-
-        // Form submission
-        document.querySelector('.schedule-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if (!selectedService || !selectedLocation || !selectedDate || !selectedTime) {
-                alert('Por favor, preencha todos os campos necessários.');
-                return;
-            }
-
-            const appointment = INSS.scheduleAppointment(
-                selectedService,
-                selectedLocation,
-                selectedDate,
-                selectedTime
-            );
-
-            // Show success message
-            const successMessage = document.createElement('div');
-            successMessage.className = 'alert alert-success mt-3';
-            successMessage.innerHTML = `
-                <h4 class="alert-heading">Agendamento Confirmado!</h4>
-                <p>Seu agendamento foi realizado com sucesso. Anote o número de protocolo para consultas futuras.</p>
-                <hr>
-                <p class="mb-0">Protocolo: ${appointment.id}</p>
-            `;
-
-            this.appendChild(successMessage);
-
-            // Reset form after 3 seconds
-            setTimeout(() => {
-                window.location.reload();
-            }, 3000);
-        });
-
-        function goToStep(step) {
-            currentStep = step;
-            document.querySelectorAll('.schedule-step').forEach((s, index) => {
-                if (index < step) {
-                    s.classList.add('completed');
-                } else if (index === step - 1) {
-                    s.classList.add('active');
-                } else {
-                    s.classList.remove('active', 'completed');
-                }
-            });
-        }
-
-        function updateConfirmationDetails() {
-            const details = document.querySelector('.confirmation-details');
-            details.innerHTML = `
-                <p>
-                    <span>Serviço:</span>
-                    <strong>${selectedService || '-'}</strong>
-                </p>
-                <p>
-                    <span>Local:</span>
-                    <strong>${selectedLocation || '-'}</strong>
-                </p>
-                <p>
-                    <span>Data:</span>
-                    <strong>${selectedDate || '-'}</strong>
-                </p>
-                <p>
-                    <span>Horário:</span>
-                    <strong>${selectedTime || '-'}</strong>
-                </p>
-            `;
-        }
-    </script>
 </body>
 </html> 
